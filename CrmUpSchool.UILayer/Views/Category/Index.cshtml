@@ -1,0 +1,54 @@
+﻿@using CrmUpSchool.EntityLayer.Concrete
+@model List<Category>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/CRMLayout.cshtml";
+}
+
+<h1>Kategori Listesi</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Kategori Adı</th>
+        <th>Durum</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CategoryID</td>
+            <td>@item.CategoryName</td>
+            <td><a href ="#"class="btn btn-warning">Durum</a></td>
+            <td><a href ="#"class="btn btn-danger">Sil</a></td>
+            <td><a href ="#"class="btn btn-success">Güncelle</a></td>
+
+        </tr>
+    }
+
+</table>
+@*//100 derste mvc proje kampı  ninject contect dahil et 
+//core 5.0*@
+
+@*<form method="post">
+    <input type="hidden" asp-for="EmployeeID" />
+    <label> Personel Adı</label>
+    <input type="text" asp-for="EmployeeName" class="form-control" />
+    <br />
+
+    <label> Personel Adı</label>
+    <input type="text" asp-for="EmployeeSurname" class="form-control" />
+    <br />
+    <label> Personel Adı</label>
+    <input type="text" asp-for="EmployeeMail" class="form-control" />
+    <br />
+    <label> Personel Adı</label>
+    <input type="text" asp-for="EmployeeImage" class="form-control" />
+    <br />
+    <button class="btn btn-danger">Kaydet</button>*@
+
+@*</form>*@
+
+   

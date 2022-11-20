@@ -1,0 +1,20 @@
+﻿@model CrmUpSchool.EntityLayer.Concrete.Category
+@{
+    ViewData["Title"] = "AddCategory";
+    Layout = "~/Views/Shared/CRMLayout.cshtml";
+}
+
+<h1>Yeni Kategori Sayfası</h1>
+<form method="post">
+    <label>Kategori Adı</label>
+    <input type="text" asp-for="CategoryName" class="form-control" /> <br />
+    <label>Kategori Açıklaması</label>
+    <input type="text" asp-for="CategoryDescription" class="form-control" /> <br />
+    <button class="btn btn-primary" >Kaydet</button>
+
+</form>
+@*crud
+filtreleme
+fluent validation
+DIcontainer
+entity''e özgü method*@

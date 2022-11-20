@@ -1,0 +1,21 @@
+﻿
+@using CrmUpSchool.EntityLayer.Concrete
+@model List<Customer>
+@{
+    Layout = null;
+}
+<link href="~/css/bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link href="~/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<table class="table table-bordered">
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CustomerName</td>
+            <td>@item.CustomerSurname</td>
+        </tr>
+    }
+
+
+</table>
