@@ -1,7 +1,6 @@
 ﻿using CrmUpSchool.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +15,7 @@ namespace CrmUpSchool.DataAccessLayer.Concrete
         {
             optionsBuilder.UseSqlServer("Server=localhost;database=DbCRM;Integrated Security=true");
         }
+     
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
@@ -23,6 +23,7 @@ namespace CrmUpSchool.DataAccessLayer.Concrete
         public DbSet<Message> Messages { get; set; }
         public DbSet<EmployeeTask> EmployeeTasks { get; set; }
         public DbSet<EmployeeTaskDetail> EmployeeTaskDetails { get; set; }
+        public DbSet<Announcement> Announcements { get; set; }
 
 
     }

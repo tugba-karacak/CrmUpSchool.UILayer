@@ -11,7 +11,7 @@ namespace CrmUpSchool.BusinessLayer.Concrete
 {
     public class CustomerManager : ICustomerService
     {
-        ICustomerDal _customerDal;
+      private readonly  ICustomerDal _customerDal;
 
         public CustomerManager(ICustomerDal customerDal)
         {

@@ -1,4 +1,5 @@
-﻿using CrmUpSchool.DataAccessLayer.Repository;
+﻿using CrmUpSchool.DataAccessLayer.Abstract;
+using CrmUpSchool.DataAccessLayer.Repository;
 using CrmUpSchool.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CrmUpSchool.DataAccessLayer.EntityFramework
 {
-  public class EFMessageDal: GenericRepository<Message>. IMessageDal
+  public class EFMessageDal: GenericRepository<Message>,IMessageDal
     {
     }
 }

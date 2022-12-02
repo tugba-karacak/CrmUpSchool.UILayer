@@ -53,8 +53,6 @@ namespace CrmUpSchool.DataAccessLayer.Repository
             }
         }
 
-        internal interface IMessageDal
-        {
-        }
+       
     }
 }

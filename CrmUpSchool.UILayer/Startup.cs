@@ -1,6 +1,7 @@
-using Crm.UpSchool.DataAccessLayer.EntityFramework;
+
 using CrmUpSchool.BusinessLayer.Abstract;
 using CrmUpSchool.BusinessLayer.Concrete;
+using CrmUpSchool.BusinessLayer.DIContainer;
 using CrmUpSchool.DataAccessLayer.Abstract;
 using CrmUpSchool.DataAccessLayer.Concrete;
 using CrmUpSchool.DataAccessLayer.EntityFramework;
@@ -32,31 +33,23 @@ namespace CrmUpSchool.UILayer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ICategoryService, CategoryManager>();
-            services.AddScoped<ICategoryDal, EFCategoryDal>();
-            services.AddScoped<IEmployeeService, EmployeeManager>();
-            services.AddScoped<IEmployeeDal, EFEmployeeDal>();
+            services.Containerdependencies();
             services.AddDbContext<Context>();
-            services.AddScoped<IEmployeeTaskService, EmployeeTaskManager>();
-            services.AddScoped<IEmployeeTaskDal, EFEmployeeTaskDal>();
-
-            services.AddScoped<IEmployeeTaskDetailService, EmployeeTaskDetailManager>();
-            services.AddScoped<IEmployeeTaskDetailDal, EFEmployeeTaskDetail>();
 
             services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
             services.AddControllersWithViews();
+
             services.AddMvc(config =>
             {
                 var policy = new AuthorizationPolicyBuilder()
-                            .RequireAuthenticatedUser()//bu kýsým tüm sayfalarda yetkilendirme yani kullanýcý login olmadan hiçbir sayfaya eriþememesini saðlar
+                            .RequireAuthenticatedUser()
                             .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
-
-
             });
+
             services.ConfigureApplicationCookie(options =>
             {
-                options.LoginPath = "/Login/Index";//kullanýcý login olmadan eriþmeye çalýþýrsa login sayfasýna yönlendirilmesini saðlar
+                options.LoginPath = "/Login/Index";
             });
         }
 
@@ -77,23 +70,22 @@ namespace CrmUpSchool.UILayer
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseRouting();
-
+      
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
 
-            app.UseEndpoints(endpoints =>
-            {
                 endpoints.MapControllerRoute(
                   name: "areas",
                   pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
                 );
+
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Login}/{action=Index}/{id?}");
             });
+        
         }
     }
 }
